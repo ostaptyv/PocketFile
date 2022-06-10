@@ -17,11 +17,15 @@
 		84C06F2D2852446700000AD1 /* UUID+zero.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C06F2C2852446700000AD1 /* UUID+zero.swift */; };
 		84C06F3128526F7E00000AD1 /* FilesModuleBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C06F3028526F7E00000AD1 /* FilesModuleBuilder.swift */; };
 		84C06F332852728B00000AD1 /* FilesViewProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C06F322852728B00000AD1 /* FilesViewProtocol.swift */; };
+		84C06F3728528C1500000AD1 /* FilesNetworkLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C06F3628528C1500000AD1 /* FilesNetworkLayer.swift */; };
+		84C06F3928528C3400000AD1 /* FilesNetworkLayerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C06F3828528C3400000AD1 /* FilesNetworkLayerDelegate.swift */; };
+		84C06F3B28528D2E00000AD1 /* SheetValueRangeEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C06F3A28528D2E00000AD1 /* SheetValueRangeEntity.swift */; };
+		84C06F3D28528EA100000AD1 /* SheetEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C06F3C28528EA100000AD1 /* SheetEntity.swift */; };
 		84C936C4284FA405001DA450 /* FilesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C936C3284FA405001DA450 /* FilesViewController.swift */; };
 		84C936C8284FA809001DA450 /* FileCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C936C7284FA809001DA450 /* FileCollectionViewCell.swift */; };
 		84EFC14D284F94C800F814BE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84EFC14C284F94C800F814BE /* AppDelegate.swift */; };
 		84EFC14F284F94C800F814BE /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84EFC14E284F94C800F814BE /* SceneDelegate.swift */; };
-		84FBBB8228515B70005EC458 /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84FBBB8128515B70005EC458 /* File.swift */; };
+		84FBBB8228515B70005EC458 /* FileEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84FBBB8128515B70005EC458 /* FileEntity.swift */; };
 		84FBBB8428515C6C005EC458 /* FileType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84FBBB8328515C6C005EC458 /* FileType.swift */; };
 		84FBBB8628516257005EC458 /* FileTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84FBBB8528516257005EC458 /* FileTableViewCell.swift */; };
 		84FBBB8828521D36005EC458 /* FilesViewDrawer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84FBBB8728521D36005EC458 /* FilesViewDrawer.swift */; };
@@ -39,13 +43,17 @@
 		84C06F2C2852446700000AD1 /* UUID+zero.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UUID+zero.swift"; sourceTree = "<group>"; };
 		84C06F3028526F7E00000AD1 /* FilesModuleBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilesModuleBuilder.swift; sourceTree = "<group>"; };
 		84C06F322852728B00000AD1 /* FilesViewProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilesViewProtocol.swift; sourceTree = "<group>"; };
+		84C06F3628528C1500000AD1 /* FilesNetworkLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilesNetworkLayer.swift; sourceTree = "<group>"; };
+		84C06F3828528C3400000AD1 /* FilesNetworkLayerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilesNetworkLayerDelegate.swift; sourceTree = "<group>"; };
+		84C06F3A28528D2E00000AD1 /* SheetValueRangeEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SheetValueRangeEntity.swift; sourceTree = "<group>"; };
+		84C06F3C28528EA100000AD1 /* SheetEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SheetEntity.swift; sourceTree = "<group>"; };
 		84C936C3284FA405001DA450 /* FilesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilesViewController.swift; sourceTree = "<group>"; wrapsLines = 1; };
 		84C936C7284FA809001DA450 /* FileCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileCollectionViewCell.swift; sourceTree = "<group>"; wrapsLines = 1; };
 		84EFC149284F94C800F814BE /* PocketFile.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PocketFile.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		84EFC14C284F94C800F814BE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; wrapsLines = 1; };
 		84EFC14E284F94C800F814BE /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		84EFC15A284F94CA00F814BE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		84FBBB8128515B70005EC458 /* File.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = File.swift; sourceTree = "<group>"; };
+		84FBBB8128515B70005EC458 /* FileEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileEntity.swift; sourceTree = "<group>"; };
 		84FBBB8328515C6C005EC458 /* FileType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileType.swift; sourceTree = "<group>"; };
 		84FBBB8528516257005EC458 /* FileTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileTableViewCell.swift; sourceTree = "<group>"; };
 		84FBBB8728521D36005EC458 /* FilesViewDrawer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilesViewDrawer.swift; sourceTree = "<group>"; };
@@ -100,6 +108,7 @@
 			children = (
 				84FBBB8928521D4B005EC458 /* FilesViewDrawerDelegate.swift */,
 				84C06F322852728B00000AD1 /* FilesViewProtocol.swift */,
+				84C06F3828528C3400000AD1 /* FilesNetworkLayerDelegate.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -110,6 +119,22 @@
 				84C06F3028526F7E00000AD1 /* FilesModuleBuilder.swift */,
 			);
 			path = Builders;
+			sourceTree = "<group>";
+		};
+		84C06F3428528C0000000AD1 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				84C06F3528528C0400000AD1 /* Network */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		84C06F3528528C0400000AD1 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				84C06F3628528C1500000AD1 /* FilesNetworkLayer.swift */,
+			);
+			path = Network;
 			sourceTree = "<group>";
 		};
 		84C936C0284FA27F001DA450 /* Views */ = {
@@ -156,8 +181,9 @@
 				84EFC14E284F94C800F814BE /* SceneDelegate.swift */,
 				84C06F2B2852445E00000AD1 /* Extensions */,
 				84C06F2F28526F6F00000AD1 /* Builders */,
-				84FBBB8028515B5E005EC458 /* Entities */,
 				84C06F2E28526F1B00000AD1 /* Protocols */,
+				84FBBB8028515B5E005EC458 /* Entities */,
+				84C06F3428528C0000000AD1 /* Services */,
 				84C06F1D2852208C00000AD1 /* Presenters */,
 				84C06F28285237FA00000AD1 /* Routers */,
 				84C936C0284FA27F001DA450 /* Views */,
@@ -168,8 +194,10 @@
 		84FBBB8028515B5E005EC458 /* Entities */ = {
 			isa = PBXGroup;
 			children = (
-				84FBBB8128515B70005EC458 /* File.swift */,
+				84FBBB8128515B70005EC458 /* FileEntity.swift */,
 				84FBBB8328515C6C005EC458 /* FileType.swift */,
+				84C06F3A28528D2E00000AD1 /* SheetValueRangeEntity.swift */,
+				84C06F3C28528EA100000AD1 /* SheetEntity.swift */,
 			);
 			path = Entities;
 			sourceTree = "<group>";
@@ -254,14 +282,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				84C06F3928528C3400000AD1 /* FilesNetworkLayerDelegate.swift in Sources */,
 				84C06F2A2852380100000AD1 /* FilesRouter.swift in Sources */,
 				84FBBB8428515C6C005EC458 /* FileType.swift in Sources */,
 				84C06F1C2852208900000AD1 /* FilesPresenter.swift in Sources */,
 				84FBBB8828521D36005EC458 /* FilesViewDrawer.swift in Sources */,
 				84FBBB8A28521D4B005EC458 /* FilesViewDrawerDelegate.swift in Sources */,
-				84FBBB8228515B70005EC458 /* File.swift in Sources */,
+				84FBBB8228515B70005EC458 /* FileEntity.swift in Sources */,
+				84C06F3D28528EA100000AD1 /* SheetEntity.swift in Sources */,
 				84C06F2D2852446700000AD1 /* UUID+zero.swift in Sources */,
 				84EFC14D284F94C800F814BE /* AppDelegate.swift in Sources */,
+				84C06F3728528C1500000AD1 /* FilesNetworkLayer.swift in Sources */,
 				84C936C8284FA809001DA450 /* FileCollectionViewCell.swift in Sources */,
 				84C06F3128526F7E00000AD1 /* FilesModuleBuilder.swift in Sources */,
 				84C06F232852222E00000AD1 /* FilesCollectionViewFlowLayoutDelegator.swift in Sources */,
@@ -270,6 +301,7 @@
 				84C06F1A28521FC900000AD1 /* FilesTableViewDataSourcer.swift in Sources */,
 				84C936C4284FA405001DA450 /* FilesViewController.swift in Sources */,
 				84C06F212852215400000AD1 /* FilesCollectionViewDataSourcer.swift in Sources */,
+				84C06F3B28528D2E00000AD1 /* SheetValueRangeEntity.swift in Sources */,
 				84EFC14F284F94C800F814BE /* SceneDelegate.swift in Sources */,
 				84C06F26285234B900000AD1 /* FileType+systemImageName.swift in Sources */,
 				84C06F332852728B00000AD1 /* FilesViewProtocol.swift in Sources */,

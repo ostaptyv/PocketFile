@@ -9,14 +9,19 @@ import UIKit
 
 class FilesCollectionViewDataSourcer: NSObject, UICollectionViewDataSource {
     var presenter: FilesPresenter!
+    var parentDirectoryID: UUID!
+    
+    private var files: [String] {
+        return presenter.contentsOfDirectory(forID: parentDirectoryID)
+    }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return presenter.data.count
+        return files.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: .fileTileReuseIdentifier , for: indexPath) as! FileCollectionViewCell
-        cell.fileName = presenter.data[indexPath.item]
+        cell.fileName = files[indexPath.item]
         cell.fileType = .file
         
         return cell

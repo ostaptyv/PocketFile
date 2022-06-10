@@ -9,16 +9,21 @@ import UIKit
 
 class FilesTableViewDataSourcer: NSObject, UITableViewDataSource {
     var presenter: FilesPresenter!
+    var parentDirectoryID: UUID!
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: .fileTableReuseIdentifier, for: indexPath) as! FileTableViewCell
-        cell.fileName = presenter.data[indexPath.row]
-        cell.fileType = .directory
-        
-        return cell
+    private var files: [String] {
+        return presenter.contentsOfDirectory(forID: parentDirectoryID)
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return presenter.data.count
+        return files.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: .fileTableReuseIdentifier, for: indexPath) as! FileTableViewCell
+        cell.fileName = files[indexPath.row]
+        cell.fileType = .directory
+        
+        return cell
     }
 }

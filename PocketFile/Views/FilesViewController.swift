@@ -48,6 +48,7 @@ class FilesViewController: UIViewController, FilesViewDrawerDelegate, FilesViewP
     public func setParentDirectoryID(_ directoryID: UUID) {
         if self.parentDirectoryID == nil {
             self.parentDirectoryID = directoryID
+            viewDrawer.setParentDirectoryID(directoryID)
         }
     }
 
@@ -62,6 +63,9 @@ class FilesViewController: UIViewController, FilesViewDrawerDelegate, FilesViewP
         view.backgroundColor = .yellow
         updateBarButtonItems(using: fileTreeViewType)
         updateFileTreeView(using: fileTreeViewType)
+        
+        // FIXME: FIXME: For debug purposes only; violates incapsulation
+        presenter.networkLayer.loadFileData()
     }
     
     // MARK: - View drawer delegate methods

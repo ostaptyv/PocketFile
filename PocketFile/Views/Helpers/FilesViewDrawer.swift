@@ -44,6 +44,13 @@ class FilesViewDrawer {
         }
     }
     
+    // MARK: - Helpers configuration methods
+    
+    public func setParentDirectoryID(_ directoryID: UUID) {
+        tableViewDataSourcer.parentDirectoryID = directoryID
+        collectionViewDataSourcer.parentDirectoryID = directoryID
+    }
+    
     private func setupHelpers() {
         tableViewDataSourcer.presenter = presenter
         collectionViewDataSourcer.presenter = presenter
