@@ -8,16 +8,14 @@
 import Foundation
 
 struct FilesModuleBuilder {
-    static func build() -> FilesViewController {
+    static func build(with directoryID: UUID) -> FilesViewController {
         let viewController = FilesViewController()
-        let presenter = FilesPresenter(view: viewController)
+        let presenter = FilesPresenter(view: viewController, directoryID: directoryID)
         let router = FilesRouter(view: viewController)
         let viewDrawer = FilesViewDrawer(presenter: presenter, router: router)
-        let networkLayer = FilesNetworkLayer(delegate: presenter)
         
         viewController.presenter = presenter
         viewController.viewDrawer = viewDrawer
-        presenter.networkLayer = networkLayer
         
         return viewController
     }

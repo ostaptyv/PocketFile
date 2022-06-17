@@ -26,8 +26,6 @@ enum FileTreeViewType {
 }
 
 class FilesViewController: UIViewController, FilesViewDrawerDelegate, FilesViewProtocol {
-    private var parentDirectoryID: UUID!
-    
     var presenter: FilesPresenter!
     var viewDrawer: FilesViewDrawer!
     
@@ -38,20 +36,6 @@ class FilesViewController: UIViewController, FilesViewDrawerDelegate, FilesViewP
         }
     }
     
-    // MARK: - Pass parent directory ID
-    
-    /// Pass the directory ID when instantiating new files view controller in order to obtain relevant branch of the file tree.
-    ///
-    /// This method should be called once, before adding the view controller to the view controllers stack.
-    ///
-    /// - Parameter directoryID: Parent directory UUID structure. Zero UUID (00000000-0000-0000-0000-000000000000) is the special value representing root directory.
-    public func setParentDirectoryID(_ directoryID: UUID) {
-        if self.parentDirectoryID == nil {
-            self.parentDirectoryID = directoryID
-            viewDrawer.setParentDirectoryID(directoryID)
-        }
-    }
-
     // MARK: - View controller lifecycle methods
     
     override func viewDidLoad() {
@@ -60,15 +44,14 @@ class FilesViewController: UIViewController, FilesViewDrawerDelegate, FilesViewP
         viewDrawer.delegate = self
         viewDrawer.setupInterface()
         
-        view.backgroundColor = .yellow
         updateBarButtonItems(using: fileTreeViewType)
         updateFileTreeView(using: fileTreeViewType)
         
-        // FIXME: FIXME: For debug purposes only; violates incapsulation
-        presenter.networkLayer.loadFileData()
+        self.view.backgroundColor = .systemBackground
+        self.navigationItem.title = presenter.directoryName
     }
     
-    // MARK: - View drawer delegate methods
+    // MARK: - View drawer delegate conformance
     
     var hostingViewSafeAreaLayoutGuide: UILayoutGuide {
         return self.view.safeAreaLayoutGuide
@@ -76,6 +59,13 @@ class FilesViewController: UIViewController, FilesViewDrawerDelegate, FilesViewP
     
     func addSubviewToHostingView(_ subview: UIView) {
         self.view.addSubview(subview)
+    }
+    
+    // MARK: - View protocol (interface for presenter) methods
+    
+    func shouldReloadData() {
+        viewDrawer.collectionView.reloadData()
+        viewDrawer.tableView.reloadData()
     }
     
     // MARK: - Responding to internal UI state changes
@@ -117,11 +107,4 @@ class FilesViewController: UIViewController, FilesViewDrawerDelegate, FilesViewP
             fileTreeViewType = .tiles
         }
     }
-}
-
-// MARK: - Constants
-
-extension String {
-    static let fileTileReuseIdentifier: String = "FileCollectionViewCell"
-    static let fileTableReuseIdentifier: String = "FileTableViewCell"
 }

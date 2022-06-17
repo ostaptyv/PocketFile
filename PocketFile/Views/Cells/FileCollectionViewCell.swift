@@ -40,10 +40,6 @@ class FileCollectionViewCell: UICollectionViewCell {
         initializeInterface()
         setupViewHierarchy()
         constraintInterface()
-        
-//        contentView.backgroundColor = .red
-//        contentView.layer.borderColor = UIColor.black.cgColor
-//        contentView.layer.borderWidth = 2
     }
     
     // MARK: - Initalize UI

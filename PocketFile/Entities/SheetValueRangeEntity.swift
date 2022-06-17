@@ -7,6 +7,7 @@
 
 import Foundation
 
+// API Reference: https://developers.google.com/sheets/api/reference/rest/v4/spreadsheets.values#resource-valuerange
 struct SheetValueRangeEntity: Decodable {
     let values: [[String]]
     
@@ -19,11 +20,3 @@ struct SheetValueRangeEntity: Decodable {
     }
 #endif
 }
-
-#if DEBUG
-enum SheetDimension: String, Decodable {
-    case rows = "ROWS"
-    case columns = "COLUMNS"
-    case unspecified = "DIMENSION_UNSPECIFIED"
-}
-#endif

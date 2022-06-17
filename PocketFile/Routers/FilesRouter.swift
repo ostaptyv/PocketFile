@@ -11,9 +11,8 @@ import UIKit
 class FilesRouter {
     private weak var view: FilesViewController?
     
-    func openDirectory(forID directoryID: UUID) {
-        let filesVC = FilesModuleBuilder.build()
-        filesVC.setParentDirectoryID(directoryID)
+    public func openDirectory(forID directoryID: UUID) {
+        let filesVC = FilesModuleBuilder.build(with: directoryID)
         
         view?.navigationController?.pushViewController(filesVC, animated: true)
     }

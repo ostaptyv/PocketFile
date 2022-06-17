@@ -7,6 +7,7 @@
 
 import Foundation
 
+// API Reference: https://developers.google.com/sheets/api/reference/rest/v4/spreadsheets.values/batchGet
 struct SheetEntity: Decodable {
     let valueRanges: [SheetValueRangeEntity]
     

@@ -46,11 +46,6 @@ class FilesViewDrawer {
     
     // MARK: - Helpers configuration methods
     
-    public func setParentDirectoryID(_ directoryID: UUID) {
-        tableViewDataSourcer.parentDirectoryID = directoryID
-        collectionViewDataSourcer.parentDirectoryID = directoryID
-    }
-    
     private func setupHelpers() {
         tableViewDataSourcer.presenter = presenter
         collectionViewDataSourcer.presenter = presenter
@@ -68,19 +63,16 @@ class FilesViewDrawer {
     }
     private func makeGasketContentView() -> UIView {
         let gasketContentView = UIView()
-        gasketContentView.backgroundColor = .blue
         
         return gasketContentView
     }
     private func makeCollectionView() -> UICollectionView {
         let flowLayout = UICollectionViewFlowLayout()
         flowLayout.scrollDirection = .vertical
-//        flowLayout.estimatedItemSize = UICollectionViewFlowLayout.automaticSize
         flowLayout.minimumLineSpacing = 0
         flowLayout.minimumInteritemSpacing = 0
         
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: flowLayout)
-        collectionView.backgroundColor = .brown
         collectionView.register(FileCollectionViewCell.self, forCellWithReuseIdentifier: .fileTileReuseIdentifier)
         collectionView.delegate = collectionViewFlowLayoutDelegator
         collectionView.dataSource = collectionViewDataSourcer

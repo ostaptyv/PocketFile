@@ -12,5 +12,10 @@ class FilesTableViewDelegator: NSObject, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+        let cell = tableView.cellForRow(at: indexPath) as! FileTableViewCell
+        
+        if cell.fileType == .directory {
+            router.openDirectory(forID: cell.itemUUID)
+        }
     }
 }

@@ -11,5 +11,5 @@ struct FileEntity: Decodable {
     let name: String
     let type: FileType
     let uuid: UUID
-    let parentUUID: UUID?
+    let parentUUID: UUID
 }

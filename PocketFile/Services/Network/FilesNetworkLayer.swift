@@ -8,7 +8,6 @@
 import Foundation
 
 class FilesNetworkLayer {
-    
     private let session: URLSession
     private weak var delegate: FilesNetworkLayerDelegate?
     
@@ -22,6 +21,9 @@ class FilesNetworkLayer {
     
     // MARK: - Public interface
     
+    /// Method to trigger cloud file tree loading.
+    ///
+    /// - Note: After completing this method invokes delegate method `networkRequestDidCompleteSuccessfully(with:)` at non-main queue. If you do any UI-related work, make sure you're switched to the main queue.
     public func loadFileData() {
         let request = constructURLRequest()
         let dataTask = session.dataTask(with: request) { [weak self] data, urlResponse, error in
@@ -45,22 +47,10 @@ class FilesNetworkLayer {
                 print("Error when decoding data received from server: \(error)")
             }
             
-            DispatchQueue.main.async {
-                self?.delegate?.networkRequestDidCompleteSuccessfully(with: sheetEntity)
-            }
+            self?.delegate?.networkRequestDidCompleteSuccessfully(with: sheetEntity)
             
         }
         dataTask.resume()
-    }
-    
-    public init(delegate: FilesNetworkLayerDelegate) {
-        let sessionConfiguration = URLSessionConfiguration.default
-        sessionConfiguration.waitsForConnectivity = true
-        
-        let session = URLSession(configuration: sessionConfiguration)
-        self.session = session
-        
-        self.delegate = delegate
     }
     
     // MARK: - Private methods
@@ -80,9 +70,28 @@ class FilesNetworkLayer {
     }
     
     private func constructQueryItems() -> [URLQueryItem] {
-        let ranges = URLQueryItem(name: "ranges", value: "Sheet1")
-        let key = URLQueryItem(name: "key", value: "<Your Google API key here>")
+        // FIXME: FIXME: Develop the mechanism of the secure storing of the API key in the release package.
+        let apiKey = ProcessInfo.processInfo.environment["googleSheetsAPIKey"]!
         
-        return [ranges, key]
+        let arguments: [String: String] = [
+            "ranges": "Sheet1",
+            "key": apiKey
+        ]
+        
+        return arguments.map { (key: String, value: String) in
+            return URLQueryItem(name: key, value: value)
+        }
+    }
+    
+    // MARK: - Initializers
+    
+    public init(delegate: FilesNetworkLayerDelegate) {
+        let sessionConfiguration = URLSessionConfiguration.default
+        sessionConfiguration.waitsForConnectivity = true
+        
+        let session = URLSession(configuration: sessionConfiguration)
+        self.session = session
+        
+        self.delegate = delegate
     }
 }

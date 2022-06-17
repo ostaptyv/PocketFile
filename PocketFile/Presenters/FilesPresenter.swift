@@ -7,46 +7,59 @@
 
 import Foundation
 
-class FilesPresenter: FilesNetworkLayerDelegate {
+class FilesPresenter {
     private weak var view: FilesViewProtocol?
-    var networkLayer: FilesNetworkLayer!
-        
+    
+    let currentDirectoryID: UUID
+    private var cachedFiles: [FileEntity]?
+    private var cachedDirectoryName: String?
+    
     // MARK: - Public interface
     
-    public func contentsOfDirectory(forID directoryID: UUID) -> [String] {
-        return Array(repeating: ["вступление.docx", "presentation.ppt", "75595287_586790498778990_5946898716899147776_n", "diplom.pdf", "sources", "approximation.py", "Photos"], count: 5).flatMap { $0 }
+    public var files: [FileEntity] {
+        if let cachedFiles = cachedFiles {
+            return cachedFiles
+        }
+        
+        cachedFiles = CloudRepository.shared.contentsOfDirectory(forID: self.currentDirectoryID)
+        return cachedFiles!
     }
     
-    // MARK: - Files network layer delegate methods
-    
-    func networkRequestDidCompleteSuccessfully(with response: SheetEntity) {
+    public var directoryName: String {
+        if let cachedDirectoryName = cachedDirectoryName {
+            return cachedDirectoryName
+        }
         
+        cachedDirectoryName = CloudRepository.shared.directoryName(forID: currentDirectoryID)
+        return cachedDirectoryName!
     }
     
-    // MARK: - Private methods
-    
-    private func transformSheetToFiles(_ sheetEntity: SheetEntity) -> [FileEntity] {
-        let valueRange = sheetEntity.valueRanges.first!
+    // MARK: - Cloud repository delegate conformance
+
+    @objc func shouldReloadData() {
+        cachedFiles = nil // presenter should create a new cache if the data in the model changes
         
-        return valueRange.values.map(transformValueRangeToFile(_:))
-        
-    }
-    
-    private func transformValueRangeToFile(_ valueRange: [String]) -> FileEntity {
-        let name = valueRange[3]
-        let type = FileType(rawValue: valueRange[2])!
-        let uuid = UUID(uuidString: valueRange[0])!
-        let parentUUID = valueRange[1].isEmpty ? UUID.zero : UUID(uuidString: valueRange[1])
-        
-        return FileEntity(name: name,
-                          type: type,
-                          uuid: uuid,
-                          parentUUID: parentUUID)
+        DispatchQueue.main.async {
+            self.view?.shouldReloadData()
+        }
     }
     
     // MARK: - Initializers
     
-    public init(view: FilesViewProtocol) {
+    /// Creates new instance of the presenter.
+    ///
+    /// Should not be used directly in the code unless testing, consider using `FilesModuleBuilder.build(with:)`.
+    ///
+    /// - Parameters:
+    ///   - view: View controller that will communicate with the model layer via this presenter.
+    ///   - directoryID: Current directory identifier. If you pass ID of some directory, its files and child directories will be retrieved by the presenter. If you want to reference the root directory use a zero UUID (00000000-0000-0000-0000-000000000000).
+    public init(view: FilesViewProtocol, directoryID currentDirectoryID: UUID) {
         self.view = view
+        self.currentDirectoryID = currentDirectoryID
+        
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(shouldReloadData),
+                                               name: .cloudRepositoryUIShouldReloadDataNotification,
+                                               object: nil)
     }
 }

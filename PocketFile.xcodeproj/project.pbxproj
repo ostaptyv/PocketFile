@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8426EA0D285CC01700F1F500 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8426EA0C285CC01700F1F500 /* Constants.swift */; };
+		8426EA16285FCFC000F1F500 /* SheetDimension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8426EA15285FCFC000F1F500 /* SheetDimension.swift */; };
+		84AAC26928562E960008C9E9 /* CloudRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AAC26828562E950008C9E9 /* CloudRepository.swift */; };
 		84C06F1A28521FC900000AD1 /* FilesTableViewDataSourcer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C06F1928521FC900000AD1 /* FilesTableViewDataSourcer.swift */; };
 		84C06F1C2852208900000AD1 /* FilesPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C06F1B2852208900000AD1 /* FilesPresenter.swift */; };
 		84C06F1F285220E300000AD1 /* FilesTableViewDelegator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C06F1E285220E300000AD1 /* FilesTableViewDelegator.swift */; };
@@ -33,6 +36,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		8426EA0C285CC01700F1F500 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		8426EA15285FCFC000F1F500 /* SheetDimension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SheetDimension.swift; sourceTree = "<group>"; };
+		84AAC26828562E950008C9E9 /* CloudRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CloudRepository.swift; sourceTree = "<group>"; };
 		84C06F1928521FC900000AD1 /* FilesTableViewDataSourcer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilesTableViewDataSourcer.swift; sourceTree = "<group>"; };
 		84C06F1B2852208900000AD1 /* FilesPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilesPresenter.swift; sourceTree = "<group>"; };
 		84C06F1E285220E300000AD1 /* FilesTableViewDelegator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilesTableViewDelegator.swift; sourceTree = "<group>"; };
@@ -71,6 +77,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		84AAC2612853B2B50008C9E9 /* Repositories */ = {
+			isa = PBXGroup;
+			children = (
+				84AAC26828562E950008C9E9 /* CloudRepository.swift */,
+			);
+			path = Repositories;
+			sourceTree = "<group>";
+		};
+		84AAC267285619AF0008C9E9 /* Delegates */ = {
+			isa = PBXGroup;
+			children = (
+				84FBBB8928521D4B005EC458 /* FilesViewDrawerDelegate.swift */,
+				84C06F3828528C3400000AD1 /* FilesNetworkLayerDelegate.swift */,
+			);
+			path = Delegates;
+			sourceTree = "<group>";
+		};
 		84C06F1D2852208C00000AD1 /* Presenters */ = {
 			isa = PBXGroup;
 			children = (
@@ -106,9 +129,8 @@
 		84C06F2E28526F1B00000AD1 /* Protocols */ = {
 			isa = PBXGroup;
 			children = (
-				84FBBB8928521D4B005EC458 /* FilesViewDrawerDelegate.swift */,
 				84C06F322852728B00000AD1 /* FilesViewProtocol.swift */,
-				84C06F3828528C3400000AD1 /* FilesNetworkLayerDelegate.swift */,
+				84AAC267285619AF0008C9E9 /* Delegates */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -124,6 +146,7 @@
 		84C06F3428528C0000000AD1 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				84AAC2612853B2B50008C9E9 /* Repositories */,
 				84C06F3528528C0400000AD1 /* Network */,
 			);
 			path = Services;
@@ -179,10 +202,11 @@
 				84EFC15A284F94CA00F814BE /* Info.plist */,
 				84EFC14C284F94C800F814BE /* AppDelegate.swift */,
 				84EFC14E284F94C800F814BE /* SceneDelegate.swift */,
+				8426EA0C285CC01700F1F500 /* Constants.swift */,
 				84C06F2B2852445E00000AD1 /* Extensions */,
 				84C06F2F28526F6F00000AD1 /* Builders */,
-				84C06F2E28526F1B00000AD1 /* Protocols */,
 				84FBBB8028515B5E005EC458 /* Entities */,
+				84C06F2E28526F1B00000AD1 /* Protocols */,
 				84C06F3428528C0000000AD1 /* Services */,
 				84C06F1D2852208C00000AD1 /* Presenters */,
 				84C06F28285237FA00000AD1 /* Routers */,
@@ -198,6 +222,7 @@
 				84FBBB8328515C6C005EC458 /* FileType.swift */,
 				84C06F3A28528D2E00000AD1 /* SheetValueRangeEntity.swift */,
 				84C06F3C28528EA100000AD1 /* SheetEntity.swift */,
+				8426EA15285FCFC000F1F500 /* SheetDimension.swift */,
 			);
 			path = Entities;
 			sourceTree = "<group>";
@@ -282,6 +307,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8426EA0D285CC01700F1F500 /* Constants.swift in Sources */,
 				84C06F3928528C3400000AD1 /* FilesNetworkLayerDelegate.swift in Sources */,
 				84C06F2A2852380100000AD1 /* FilesRouter.swift in Sources */,
 				84FBBB8428515C6C005EC458 /* FileType.swift in Sources */,
@@ -292,8 +318,10 @@
 				84C06F3D28528EA100000AD1 /* SheetEntity.swift in Sources */,
 				84C06F2D2852446700000AD1 /* UUID+zero.swift in Sources */,
 				84EFC14D284F94C800F814BE /* AppDelegate.swift in Sources */,
+				84AAC26928562E960008C9E9 /* CloudRepository.swift in Sources */,
 				84C06F3728528C1500000AD1 /* FilesNetworkLayer.swift in Sources */,
 				84C936C8284FA809001DA450 /* FileCollectionViewCell.swift in Sources */,
+				8426EA16285FCFC000F1F500 /* SheetDimension.swift in Sources */,
 				84C06F3128526F7E00000AD1 /* FilesModuleBuilder.swift in Sources */,
 				84C06F232852222E00000AD1 /* FilesCollectionViewFlowLayoutDelegator.swift in Sources */,
 				84C06F1F285220E300000AD1 /* FilesTableViewDelegator.swift in Sources */,
@@ -321,6 +349,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_STATIC_ANALYZER_MODE = shallow;
 				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
@@ -381,6 +410,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_STATIC_ANALYZER_MODE = shallow;
 				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;

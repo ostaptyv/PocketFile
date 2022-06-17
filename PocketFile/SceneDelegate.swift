@@ -14,8 +14,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         if let windowScene = scene as? UIWindowScene {
             let window = UIWindow(windowScene: windowScene)
-            let filesVC = FilesModuleBuilder.build()
-            filesVC.setParentDirectoryID(.zero)
+            let filesVC = FilesModuleBuilder.build(with: .zero)
             
             window.rootViewController = UINavigationController(rootViewController: filesVC)
                 window.makeKeyAndVisible()

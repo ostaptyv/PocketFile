@@ -8,5 +8,5 @@
 import Foundation
 
 protocol FilesViewProtocol: AnyObject {
-    
+    func shouldReloadData()
 }
