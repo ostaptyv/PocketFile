@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		8426EA0D285CC01700F1F500 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8426EA0C285CC01700F1F500 /* Constants.swift */; };
+		8426EA10285DC34B00F1F500 /* NavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8426EA0F285DC34B00F1F500 /* NavigationViewController.swift */; };
+		8426EA12285DC6F700F1F500 /* NavigationViewProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8426EA11285DC6F700F1F500 /* NavigationViewProtocol.swift */; };
+		8426EA14285DCA9800F1F500 /* NavigationViewModuleBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8426EA13285DCA9800F1F500 /* NavigationViewModuleBuilder.swift */; };
 		8426EA16285FCFC000F1F500 /* SheetDimension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8426EA15285FCFC000F1F500 /* SheetDimension.swift */; };
 		84AAC26928562E960008C9E9 /* CloudRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AAC26828562E950008C9E9 /* CloudRepository.swift */; };
 		84C06F1A28521FC900000AD1 /* FilesTableViewDataSourcer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C06F1928521FC900000AD1 /* FilesTableViewDataSourcer.swift */; };
@@ -37,6 +40,9 @@
 
 /* Begin PBXFileReference section */
 		8426EA0C285CC01700F1F500 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		8426EA0F285DC34B00F1F500 /* NavigationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationViewController.swift; sourceTree = "<group>"; };
+		8426EA11285DC6F700F1F500 /* NavigationViewProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationViewProtocol.swift; sourceTree = "<group>"; };
+		8426EA13285DCA9800F1F500 /* NavigationViewModuleBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationViewModuleBuilder.swift; sourceTree = "<group>"; };
 		8426EA15285FCFC000F1F500 /* SheetDimension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SheetDimension.swift; sourceTree = "<group>"; };
 		84AAC26828562E950008C9E9 /* CloudRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CloudRepository.swift; sourceTree = "<group>"; };
 		84C06F1928521FC900000AD1 /* FilesTableViewDataSourcer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilesTableViewDataSourcer.swift; sourceTree = "<group>"; };
@@ -129,6 +135,7 @@
 		84C06F2E28526F1B00000AD1 /* Protocols */ = {
 			isa = PBXGroup;
 			children = (
+				8426EA11285DC6F700F1F500 /* NavigationViewProtocol.swift */,
 				84C06F322852728B00000AD1 /* FilesViewProtocol.swift */,
 				84AAC267285619AF0008C9E9 /* Delegates */,
 			);
@@ -138,6 +145,7 @@
 		84C06F2F28526F6F00000AD1 /* Builders */ = {
 			isa = PBXGroup;
 			children = (
+				8426EA13285DCA9800F1F500 /* NavigationViewModuleBuilder.swift */,
 				84C06F3028526F7E00000AD1 /* FilesModuleBuilder.swift */,
 			);
 			path = Builders;
@@ -163,6 +171,7 @@
 		84C936C0284FA27F001DA450 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				8426EA0F285DC34B00F1F500 /* NavigationViewController.swift */,
 				84C936C3284FA405001DA450 /* FilesViewController.swift */,
 				84C936C5284FA7AB001DA450 /* Cells */,
 				84FBBB8B28521D4E005EC458 /* Helpers */,
@@ -314,13 +323,16 @@
 				84C06F1C2852208900000AD1 /* FilesPresenter.swift in Sources */,
 				84FBBB8828521D36005EC458 /* FilesViewDrawer.swift in Sources */,
 				84FBBB8A28521D4B005EC458 /* FilesViewDrawerDelegate.swift in Sources */,
+				8426EA12285DC6F700F1F500 /* NavigationViewProtocol.swift in Sources */,
 				84FBBB8228515B70005EC458 /* FileEntity.swift in Sources */,
 				84C06F3D28528EA100000AD1 /* SheetEntity.swift in Sources */,
 				84C06F2D2852446700000AD1 /* UUID+zero.swift in Sources */,
 				84EFC14D284F94C800F814BE /* AppDelegate.swift in Sources */,
+				8426EA14285DCA9800F1F500 /* NavigationViewModuleBuilder.swift in Sources */,
 				84AAC26928562E960008C9E9 /* CloudRepository.swift in Sources */,
 				84C06F3728528C1500000AD1 /* FilesNetworkLayer.swift in Sources */,
 				84C936C8284FA809001DA450 /* FileCollectionViewCell.swift in Sources */,
+				8426EA10285DC34B00F1F500 /* NavigationViewController.swift in Sources */,
 				8426EA16285FCFC000F1F500 /* SheetDimension.swift in Sources */,
 				84C06F3128526F7E00000AD1 /* FilesModuleBuilder.swift in Sources */,
 				84C06F232852222E00000AD1 /* FilesCollectionViewFlowLayoutDelegator.swift in Sources */,

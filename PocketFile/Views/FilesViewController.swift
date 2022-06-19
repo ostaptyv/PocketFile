@@ -16,9 +16,9 @@ enum FileTreeViewType {
         
         switch self {
         case .tiles:
-            result = "square.grid.2x2"
-        case .table:
             result = "list.dash"
+        case .table:
+            result = "square.grid.2x2"
         }
         
         return result
@@ -29,10 +29,16 @@ class FilesViewController: UIViewController, FilesViewDrawerDelegate, FilesViewP
     var presenter: FilesPresenter!
     var viewDrawer: FilesViewDrawer!
     
-    var fileTreeViewType: FileTreeViewType = .tiles {
-        didSet {
-            updateBarButtonItems(using: fileTreeViewType)
-            updateFileTreeView(using: fileTreeViewType)
+    private var fileTreeViewType: FileTreeViewType {
+        get {
+            let navigationViewController = castNavigationViewController()
+            return navigationViewController.fileTreeViewType
+        }
+        set {
+            let navigationViewController = castNavigationViewController()
+            navigationViewController.fileTreeViewType = newValue
+            updateFileTreeView(using: newValue)
+            updateBarButtonItems(using: newValue)
         }
     }
     
@@ -44,11 +50,18 @@ class FilesViewController: UIViewController, FilesViewDrawerDelegate, FilesViewP
         viewDrawer.delegate = self
         viewDrawer.setupInterface()
         
-        updateBarButtonItems(using: fileTreeViewType)
         updateFileTreeView(using: fileTreeViewType)
+        updateBarButtonItems(using: fileTreeViewType)
         
         self.view.backgroundColor = .systemBackground
         self.navigationItem.title = presenter.directoryName
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        updateFileTreeView(using: fileTreeViewType)
+        updateBarButtonItems(using: fileTreeViewType)
     }
     
     // MARK: - View drawer delegate conformance
@@ -68,13 +81,7 @@ class FilesViewController: UIViewController, FilesViewDrawerDelegate, FilesViewP
         viewDrawer.tableView.reloadData()
     }
     
-    // MARK: - Responding to internal UI state changes
-    
-    private func updateBarButtonItems(using fileTreeViewType: FileTreeViewType) {
-        let viewIcon = makeViewIcon(using: fileTreeViewType)
-        
-        navigationItem.rightBarButtonItems = [viewIcon]
-    }
+    // MARK: - Respond to state changes in file tree view (table/tiles)
     
     private func updateFileTreeView(using fileTreeViewType: FileTreeViewType) {
         switch fileTreeViewType {
@@ -85,6 +92,12 @@ class FilesViewController: UIViewController, FilesViewDrawerDelegate, FilesViewP
             viewDrawer.collectionView.isHidden = true
             viewDrawer.tableView.isHidden = false
         }
+    }
+    
+    private func updateBarButtonItems(using fileTreeViewType: FileTreeViewType) {
+        let viewIcon = makeViewIcon(using: fileTreeViewType)
+        
+        navigationItem.rightBarButtonItem = viewIcon
     }
     
     // MARK: - Creating navigation bar buttons
@@ -105,6 +118,20 @@ class FilesViewController: UIViewController, FilesViewDrawerDelegate, FilesViewP
             
         case .table:
             fileTreeViewType = .tiles
+        }
+    }
+    
+    // MARK: - Service methods
+    
+    private func castNavigationViewController() -> NavigationViewProtocol {
+        guard let navigationController = navigationController else {
+            fatalError("You should present FilesViewController as a child view of navigation controller")
+        }
+        
+        if let navigationViewController = navigationController as? NavigationViewProtocol {
+            return navigationViewController
+        } else {
+            fatalError("Parent navigation controller must conform to NavigationViewProtocol")
         }
     }
 }

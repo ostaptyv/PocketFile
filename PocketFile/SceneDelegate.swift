@@ -14,10 +14,12 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         if let windowScene = scene as? UIWindowScene {
             let window = UIWindow(windowScene: windowScene)
+            let navigationVC = NavigationViewModuleBuilder.build()
             let filesVC = FilesModuleBuilder.build(with: .zero)
             
-            window.rootViewController = UINavigationController(rootViewController: filesVC)
-                window.makeKeyAndVisible()
+            navigationVC.pushViewController(filesVC, animated: false)
+            window.rootViewController = navigationVC
+            window.makeKeyAndVisible()
             
             self.window = window
         }
